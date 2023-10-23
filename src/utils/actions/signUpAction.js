@@ -10,9 +10,16 @@ export async function signUpAction({ request }) {
     if (username && email && password) {
         const id = Date.now()
         const adminList = getLocalStorage('adminList')
-        adminList.push({ username, email, password, id })
-        updateLocalStorage('adminList', adminList)
-        return redirect('/login')
+
+        const existingEmail = adminList.find((admin) => admin.email === email)
+        if (!existingEmail) {
+            adminList.push({ username, email, password, id })
+            updateLocalStorage('adminList', adminList)
+            return redirect('/login')
+        } else {
+            return { email: 'Email is taken' }
+        }
+
     } else {
         alert('missing arguments')
         return redirect('/signup')
