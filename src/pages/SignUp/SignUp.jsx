@@ -1,15 +1,17 @@
-import { FormProvider } from '@/components'
+import { Button, FormProvider, Spacer } from '@/components'
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useActionData } from 'react-router-dom'
-import { Form } from 'react-router-dom'
 
 export function SignUp() {
     const errors = useActionData()
+    const navigate = useNavigate()
+
     return (
         <div className='w-full h-screen flex items-center justify-center'>
-            <FormProvider method="post" action="/signup">
+            <FormProvider>
                 <FormProvider.Header>Sign Up</FormProvider.Header>
-                <FormProvider.Form>
+                <FormProvider.Form method="post" action="/signup">
                     <FormProvider.Field>
                         <FormProvider.Label>Username</FormProvider.Label>
                         <FormProvider.Input type="text" name="username" />
@@ -22,7 +24,10 @@ export function SignUp() {
                         <FormProvider.Label>Password</FormProvider.Label>
                         <FormProvider.Input type="password" name="password" />
                     </FormProvider.Field>
+                    <Button variant="primary">Create Account</Button>
                 </FormProvider.Form>
+                <Spacer text="or" />
+                <Button variant="secondary" onClick={() => navigate('/login')}>Log in</Button>
             </FormProvider>
         </div>
     )
