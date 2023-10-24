@@ -2,11 +2,11 @@ import { forwardRef } from "react";
 import { Form } from "react-router-dom";
 
 const FormProvider = forwardRef(({ className, children, ...props }, ref) => (
-    <div ref={ref} {...props} className={`flex flex-col gap-6 border border-gray-100 shadow-lg rounded-2xl w-[25rem] h-fit px-3 py-10 bg-white ${className}`} >{children}</div>
+    <div ref={ref} {...props} className={`flex flex-col gap-6 border border-gray-100 shadow-lg rounded-2xl w-[27rem] h-fit px-10 py-10 bg-white ${className}`} >{children}</div>
 ))
 
 const FormEl = forwardRef(({ className, children, ...props }, ref) => (
-    <Form ref={ref} {...props} className={`${className}`}>
+    <Form ref={ref} {...props} className={`flex flex-col gap-5 ${className}`}>
         {children}
     </Form>
 ))
@@ -26,7 +26,7 @@ const FormLabel = forwardRef(({ className, ...props }, ref) => (
 FormProvider.Label = FormLabel
 
 const FormField = forwardRef(({ className, ...props }, ref) => (
-    <div ref={ref} className={`flex flex-col gap-2 p-4 ${className}`} {...props} />
+    <div ref={ref} className={`flex flex-col gap-2 ${className}`} {...props} />
 ))
 
 FormProvider.Field = FormField
