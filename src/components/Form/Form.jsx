@@ -1,9 +1,21 @@
 import { forwardRef } from "react";
 import { Form } from "react-router-dom";
+import { FormContext, useFormContext } from "@/utils";
+import { useEffect, useState } from "react";
 
-const FormProvider = forwardRef(({ className, children, ...props }, ref) => (
-    <div ref={ref} {...props} className={`flex flex-col gap-6 border border-gray-100 shadow-lg rounded-2xl w-[27rem] h-fit px-10 py-10 bg-white ${className}`} >{children}</div>
-))
+const FormProvider = forwardRef(({ errors, className, children, ...props }, ref) => {
+    const [fieldErrors, setFieldErrors] = useState(errors)
+
+    useEffect(() => {
+        setFieldErrors(errors)
+    }, [errors])
+
+    return (
+        <FormContext.Provider value={{ fieldErrors, setFieldErrors }}>
+            <div ref={ref} {...props} className={`flex flex-col gap-6 border border-gray-100 shadow-lg rounded-2xl w-[27rem] h-fit px-10 py-10 bg-white ${className}`} >{children}</div>
+        </FormContext.Provider>
+    )
+})
 
 const FormEl = forwardRef(({ className, children, ...props }, ref) => (
     <Form ref={ref} {...props} className={`flex flex-col gap-5 ${className}`}>
@@ -38,6 +50,16 @@ const FormHeader = forwardRef(({ className, ...props }, ref) => (
 ))
 
 FormProvider.Header = FormHeader
+
+const FormErrorMessage = forwardRef(({forInput, className, ...props }, ref) => {
+    const { fieldErrors } = useFormContext(FormContext)
+
+    return (
+        <span ref={ref} className={`text-red-400 text-xs font-bold ${className || ""}`} {...props}>{fieldErrors && fieldErrors[forInput]}</span>
+    )
+})
+
+FormProvider.ErrorMessage = FormErrorMessage
 
 export { FormProvider }
 
