@@ -3,5 +3,11 @@ export const globals = {
         home: '/',
         login: '/login',
         signup: '/signup'
+    },
+    messages: {
+        signUp: {
+            success: "Account created successfully!",
+            emailTaken: "Email is taken"
+        },
     }
 }
