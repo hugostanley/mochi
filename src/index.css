@@ -3,4 +3,8 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --toastify-color-success: rgb(132 204 22);
+}
+
 
