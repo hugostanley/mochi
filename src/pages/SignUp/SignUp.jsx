@@ -10,7 +10,7 @@ export function SignUp() {
 
     return (
         <div className='w-full h-screen flex items-center justify-center'>
-            <FormProvider>
+            <FormProvider errors={errors}>
                 <FormProvider.Header>Sign Up</FormProvider.Header>
                 <FormProvider.Form method="post" action="/signup">
                     <FormProvider.Field>
@@ -20,6 +20,7 @@ export function SignUp() {
                     <FormProvider.Field>
                         <FormProvider.Label>Email</FormProvider.Label>
                         <FormProvider.Input type="text" name="email" />
+                        <FormProvider.ErrorMessage forInput="email"/>
                     </FormProvider.Field>
                     <FormProvider.Field>
                         <FormProvider.Label>Password</FormProvider.Label>
