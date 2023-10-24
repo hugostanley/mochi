@@ -1,4 +1,5 @@
 import { Button, FormProvider, Spacer } from '@/components'
+import { globals } from '@/utils'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useActionData } from 'react-router-dom'
@@ -27,7 +28,7 @@ export function SignUp() {
                     <Button variant="primary">Create Account</Button>
                 </FormProvider.Form>
                 <Spacer text="or" />
-                <Button variant="secondary" onClick={() => navigate('/login')}>Log in</Button>
+                <Button variant="secondary" onClick={() => navigate(globals.paths.login)}>Log in</Button>
             </FormProvider>
         </div>
     )
