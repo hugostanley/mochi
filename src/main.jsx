@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { Dashboard, LandingPage, Login, SignUp } from '@/pages'
 import { ProtectedRoute } from '@/components'
-import { globals, signUpAction } from '@/utils'
+import { globals, loginAction, signUpAction } from '@/utils'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.min.css';
 import './index.css'
@@ -15,7 +15,8 @@ const router = createBrowserRouter([
     },
     {
         path: globals.paths.login,
-        element: <Login />
+        element: <Login />,
+        action: loginAction
     },
     {
         path: globals.paths.signup,
