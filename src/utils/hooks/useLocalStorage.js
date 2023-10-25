@@ -34,5 +34,5 @@ export function updateLocalStorage(key, newValue) {
 }
 
 export function getLocalStorage(key) {
-    return JSON.parse(localStorage.getItem(key) || '[]')
+    return JSON.parse(localStorage.getItem(key) || 'false')
 }
