@@ -2,7 +2,8 @@ export const globals = {
     paths: {
         home: '/',
         login: '/login',
-        signup: '/signup'
+        signup: '/signup',
+        dashboard: '/app'
     },
     messages: {
         signUp: {
