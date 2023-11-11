@@ -1,1 +1,1 @@
-export { globals } from './globals'
+export { globals, SideBarLinks } from './globals'

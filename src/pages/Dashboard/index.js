@@ -1,1 +1,7 @@
 export { Dashboard } from './Dashboard'
+export * from './Overview'
+export * from './Transactions'
+export * from './Clients'
+export * from './Deposit'
+export * from './Transfer'
+export * from './components'

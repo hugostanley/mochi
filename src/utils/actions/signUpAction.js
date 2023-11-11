@@ -11,8 +11,8 @@ export async function signUpAction({ request }) {
 
     if (username && email && password) {
         const id = Date.now()
-        const adminList = getLocalStorage('adminList')
-        const existingEmail = adminList.find((admin) => admin.email === email)
+        const adminList = getLocalStorage('adminList') || []
+        const existingEmail = adminList ? adminList.find((admin) => admin.email === email) : false
 
         if (!existingEmail) {
             adminList.push({ username, email, password, id })
