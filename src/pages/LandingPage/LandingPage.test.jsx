@@ -1,12 +1,9 @@
-import '@testing-library/react'
-import { render, screen } from '@testing-library/react'
+import { render, screen } from '@test-utils'
 import { LandingPage } from './LandingPage'
-import { BrowserRouter } from 'react-router-dom'
-import { test } from 'vitest'
-import { expect } from 'vitest'
+import { test, expect } from 'vitest'
 
 test("Renders title", () => {
-    render(<BrowserRouter><LandingPage/></BrowserRouter>)
+    render(<LandingPage />)
     const textElement = screen.getByText("This is the landing page")
     expect(textElement).toBeInTheDocument()
 })
