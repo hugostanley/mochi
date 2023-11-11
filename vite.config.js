@@ -12,7 +12,8 @@ export default defineConfig({
     },
     resolve: {
         alias: [
-            { find: "@", replacement: path.resolve(__dirname, 'src') }
+            { find: "@test-utils", replacement: path.resolve(__dirname, 'tests/test-utils.jsx') },
+            { find: "@", replacement: path.resolve(__dirname, 'src') },
         ]
     }
 })
