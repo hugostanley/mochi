@@ -1,5 +1,5 @@
 import { redirect } from "react-router-dom"
-import { getLocalStorage, updateLocalStorage } from "@/utils/hooks"
+import { getLocalStorage, updateLocalStorage } from "@/utils"
 import { toast } from "react-toastify"
 import { globals } from "../globals"
 
