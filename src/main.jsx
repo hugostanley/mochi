@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { Dashboard, LandingPage, Login, SignUp } from '@/pages'
+import { Dashboard, LandingPage, Login, SignUp, Overview, Transaction, Client, Transfer, Deposit } from '@/pages'
 import { ProtectedRoute } from '@/components'
 import { globals, loginAction, signUpAction } from '@/utils'
 import { ToastContainer } from 'react-toastify'
@@ -21,17 +21,39 @@ const router = createBrowserRouter([
     {
         path: globals.paths.signup,
         action: signUpAction,
-        element: <SignUp />
+        element: <ProtectedRoute><SignUp /></ProtectedRoute>
     },
     {
         path: globals.paths.dashboard,
-        element: <ProtectedRoute><Dashboard /></ProtectedRoute>
+        element: <ProtectedRoute><Dashboard /></ProtectedRoute>,
+        children: [
+            {
+                index: true,
+                element: <Overview />,
+            },
+            {
+                path: globals.paths.transactions,
+                element: <Transaction />
+            },
+            {
+                path: globals.paths.clients,
+                element: <Client />
+            },
+            {
+                path: globals.paths.transfer,
+                element: <Transfer />
+            },
+            {
+                path: globals.paths.deposit,
+                element: <Deposit />
+            },
+        ]
     }
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <>
+    <React.StrictMode>
         <ToastContainer />
         <RouterProvider router={router} />
-    </>,
+    </React.StrictMode>
 )
